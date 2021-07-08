@@ -1,0 +1,27 @@
+### add a user
+POST {{uri}}
+Content-Type: application/json
+
+{
+  "name": "james1",
+  "age": 24,
+  "countryOfResidence": "China"
+}
+
+### get users
+GET {{uri}}
+Content-Type: application/json
+
+### delete a user
+DELETE {{uri}}/james1
+Content-Type: application/json
+
+### change a user
+PATCH {{uri}}
+Content-Type: application/json
+
+{
+  "name": "james1",
+  "age": 421,
+  "countryOfResidence": "Japen"
+}
