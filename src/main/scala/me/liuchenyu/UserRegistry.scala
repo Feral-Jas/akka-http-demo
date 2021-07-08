@@ -32,15 +32,19 @@ object UserRegistry {
       case GetUsers(replyTo) =>
         replyTo ! Users(users.toSeq)
         Behaviors.same
+
       case CreateUser(user, replyTo) =>
         replyTo ! ActionPerformed(s"User ${user.name} created.")
         registry(users + user)
+
       case GetUser(name, replyTo) =>
         replyTo ! GetUserResponse(users.find(_.name == name))
         Behaviors.same
+
       case DeleteUser(name, replyTo) =>
         replyTo ! ActionPerformed(s"User $name deleted.")
         registry(users.filterNot(_.name == name))
+
       case UpdateUser(user, replyTo) =>
         users.find(_.name == user.name) match {
           case Some(_:User) =>replyTo ! ActionPerformed(s"User ${user.name} found and updated")

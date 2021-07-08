@@ -34,7 +34,6 @@ object QuickstartApp {
 
       val routes = new UserRoutes(userRegistryActor)(context.system)
       startHttpServer(routes.userRoutes)(context.system)
-
       Behaviors.empty
     }
     val system = ActorSystem[Nothing](rootBehavior, "HelloAkkaHttpServer")
